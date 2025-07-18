@@ -1,10 +1,10 @@
-package cfg.clg.ca;
+package cfg.clg;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CollegeAdmissionApplicationTests {
+class CollegeAdmissionProjectApplicationTests {
 
 	@Test
 	void contextLoads() {
