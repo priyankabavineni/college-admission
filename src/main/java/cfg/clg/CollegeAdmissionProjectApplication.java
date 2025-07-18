@@ -1,13 +1,13 @@
-package cfg.clg.ca;
+package cfg.clg;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CollegeAdmissionApplication {
+public class CollegeAdmissionProjectApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CollegeAdmissionApplication.class, args);
+		SpringApplication.run(CollegeAdmissionProjectApplication.class, args);
 	}
 
 }
