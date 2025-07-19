@@ -1,6 +1,8 @@
 
 package cfg.clg.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +11,9 @@ import cfg.clg.entity.AdminEntity;
 import cfg.clg.entity.ApplicationEntity;
 import cfg.clg.entity.ProgramEntity;
 import cfg.clg.entity.StudentEntity;
+import cfg.clg.exception.AdminNotFoundException;
+import cfg.clg.exception.ProgramNotFoundException;
+import cfg.clg.exception.StudentNotFoundException;
 import cfg.clg.repository.AdminRepository;
 import cfg.clg.repository.ApplicationRepository;
 import cfg.clg.repository.ProgramRepository;
@@ -35,13 +40,13 @@ public class ApplicationService {
         app.setStatus("applied");
 
         ProgramEntity program = programRepository.findById(dto.getProgramId())
-                .orElseThrow(() -> new RuntimeException("Program not found with ID: " + dto.getProgramId()));
+                .orElseThrow(() -> new ProgramNotFoundException("Program not found with ID: " + dto.getProgramId()));
 
         StudentEntity student = studentRepository.findById(dto.getSid())
-                .orElseThrow(() -> new RuntimeException("Student not found with ID: " + dto.getSid()));
+                .orElseThrow(() -> new StudentNotFoundException("Student not found with ID: " + dto.getSid()));
 
         AdminEntity admin = adminRepository.findById(dto.getAdminId())
-                .orElseThrow(() -> new RuntimeException("Admin not found with ID: " + dto.getAdminId()));
+                .orElseThrow(() -> new AdminNotFoundException("Admin not found with ID: " + dto.getAdminId()));
 
         app.setProgram(program);
         app.setStudent(student);
@@ -52,8 +57,7 @@ public class ApplicationService {
         return dto; // You could map back from saved entity if needed
     }
 
-	public Object getAllApplications() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public List<ApplicationEntity> getAllApplications() {
+        return applicationRepository.findAll();
+    }
 }
