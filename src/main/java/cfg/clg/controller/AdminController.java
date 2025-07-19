@@ -1,16 +1,13 @@
+
 package cfg.clg.controller;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import cfg.clg.entity.ApplicationEntity;
+
 import cfg.clg.service.AdminService;
 
 @RestController
@@ -21,17 +18,36 @@ public class AdminController {
     private AdminService adminService;
 
     @PutMapping("/update-status")
-    public ApplicationEntity updateStatus(
+    public ResponseData updateStatus(
             @RequestParam String applicationId,
             @RequestParam int adminId,
-            @RequestParam String status // APPROVED or REJECTED
-    ) {
-        return adminService.updateStatus(applicationId, adminId, status);
+            @RequestParam String status) {
+
+        ResponseData response = new ResponseData();
+
+        try {
+            ApplicationEntity updatedApp = adminService.updateStatus(applicationId, adminId, status);
+            response.setStatus("success");
+            response.setData(updatedApp);
+        } catch (Exception ex) {
+            response.setStatus("failed");
+            response.setMessage(ex.getMessage());
+        }
+
+        return response;
     }
 
     @GetMapping("/applications")
-    public List<ApplicationEntity> viewAllApplications() {
-        return adminService.getAllApplications();
-    }
+    public ResponseData viewAllApplications() {
+        ResponseData response = new ResponseData();
 
+        List<ApplicationEntity> applications = adminService.getAllApplications();
+        response.setStatus("success");
+        response.setData(applications);
+
+        return response;
+    }
 }
+
+
+
