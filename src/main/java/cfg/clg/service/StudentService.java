@@ -39,8 +39,8 @@ public class StudentService {
     }
 
     private void validateStudent(StudentDTO student) {
-        if (student.getSname() == null || student.getSname().length() < 10) {
-            throw new InvalidNameException("Name must be minimum 10 characters");
+        if (student.getSname() == null || student.getSname().length() < 5) {
+            throw new InvalidNameException("Name must be minimum 5 characters");
         }
         if (student.getEmail() == null || !student.getEmail().endsWith("@gmail.com")) {
             throw new InvalidEmailException("Email must end with @gmail.com");
