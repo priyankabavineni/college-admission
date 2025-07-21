@@ -24,4 +24,10 @@
  *output : A list of ApplicationEntity objects in a wrapped ResponseData.
 **URL**  : http://localhost:8080/api/allApplications
 
+**Getting Application By ID**
+  *Endpoint:Get/api/id
+  *Input : None
+  *output: Getting the id of given if it is not there it prints id not found
+**URL** : http://localhost:8080/api/applications/APP100
+
 
