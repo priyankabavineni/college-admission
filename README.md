@@ -4,7 +4,7 @@ Description: Updates the status of an application by a given admin.
 **Parameters** :applicationId (query param, String): The ID of the application to update.
                 adminId (query param, int): The ID of the admin updating the status.
                 status (query param, String): The new status to set (e.g., "APPROVED", "REJECTED").
-**URL** : http://localhost:8080/admin/update-status?applicationId=app123&adminId=1&status=APPROVED
+**URL** : http://localhost:8080/admin/update-status?applicationId=a11&adminId=91&status=REJECTED
 **ResponseExample** //for success
 {
   "status": "success",
