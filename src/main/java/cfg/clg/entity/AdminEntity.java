@@ -19,12 +19,9 @@ public class AdminEntity {
 	@Id
 	private int adminId;
 
-	private String status;
+	private String adminname;
 	
-	@ManyToOne
-	@JoinColumn(name = "sid", referencedColumnName = "sid")
-	@JsonBackReference
-	private StudentEntity student;
+
 
 	// One admin can manage many applications
 	@OneToMany(mappedBy = "admin")
