@@ -9,13 +9,11 @@ This document provides the details for the endpoints used to manage student data
 
 ### **Input:**
 **Request Body (StudentDTO)**  
-```json
 {
   "sid": 1,              // The student ID (int)
   "sname": "John Doe",    // The student's name (String)
   "email": "john.doe@gmail.com" // The student's email address (must end with "@gmail.com")
 }
-```
 
 ### **Procedure:**
 - This endpoint is used to save the provided student data to the database.
@@ -24,7 +22,6 @@ This document provides the details for the endpoints used to manage student data
 
 ### **Output:**
 **Response Body**  
-```json
 {
   "status": "success",    // Indicates the outcome of the request ("success" or "failed")
   "message": "saved successfully",    // A message describing the outcome
@@ -34,7 +31,6 @@ This document provides the details for the endpoints used to manage student data
     "email": "john.doe@gmail.com"
   } // The saved student details (StudentDTO)
 }
-```
 
 ### **URL**  
 `POST http://localhost:8080/student/save`
@@ -48,9 +44,7 @@ This document provides the details for the endpoints used to manage student data
 
 ### **Input:**
 **Query Parameter**  
-```plaintext
 sid=1   // The student ID (int)
-```
 
 ### **Procedure:**
 - This endpoint fetches the details of a student using their student ID (`sid`).
@@ -58,7 +52,6 @@ sid=1   // The student ID (int)
 
 ### **Output:**
 **Response Body**  
-```json
 {
   "status": "success",    // Indicates the outcome of the request ("success" or "failed")
   "message": "success",   // A message describing the outcome (optional)
@@ -71,7 +64,6 @@ sid=1   // The student ID (int)
     "applications": []    // List of applications related to the student (empty if no applications exist)
   }
 }
-```
 
 ### **URL**  
 `GET http://localhost:8080/student/status?sid=1`
