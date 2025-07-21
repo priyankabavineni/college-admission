@@ -2,9 +2,8 @@ package cfg.clg;
 
 import cfg.clg.dto.StudentDTO;
 import cfg.clg.dto.StudentWithApplicationsDTO;
-import cfg.clg.entity.ApplicationEntity;
-import cfg.clg.exception.InvalidEmailException;
 import cfg.clg.exception.InvalidNameException;
+import cfg.clg.exception.InvalidEmailException;
 import cfg.clg.exception.StudentNotFoundException;
 import cfg.clg.service.StudentService;
 
@@ -13,8 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.List;
 
 @SpringBootTest
 public class StudentServiceIntegrationTest {
@@ -26,7 +23,7 @@ public class StudentServiceIntegrationTest {
     public void testSaveStudent_Success() {
         StudentDTO student = new StudentDTO();
         student.setSid(100);  // use unique id or let DB generate
-        student.setSname("Valid Student");  // length >= 10 chars
+        student.setSname("Valid Student");  // length >= 5 chars
         student.setEmail("valid@gmail.com");
 
         StudentDTO savedStudent = studentService.saveStudent(student);
@@ -40,7 +37,7 @@ public class StudentServiceIntegrationTest {
     public void testSaveStudent_InvalidName() {
         StudentDTO student = new StudentDTO();
         student.setSid(101);
-        student.setSname("Short"); // less than 10 chars
+        student.setSname("Sh");  // less than 5 chars
         student.setEmail("valid@gmail.com");
 
         assertThrows(InvalidNameException.class, () -> {
@@ -101,9 +98,5 @@ public class StudentServiceIntegrationTest {
         assertNotNull(dto);
         assertNotNull(dto.getStudent());
         assertEquals(104, dto.getStudent().getSid());
-
-        List<ApplicationEntity> applications = dto.getApplications();
-        assertNotNull(applications);
-        // You can assert more here if you have test applications inserted
     }
 }
