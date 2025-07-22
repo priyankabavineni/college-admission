@@ -11,7 +11,7 @@
 	<groupId>cfg.clg</groupId>
 	<artifactId>college-admission</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>college-admission</name>
+	<name>college-admission-project</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -31,19 +31,11 @@
 	</properties>
 	<dependencies>
 	<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-web</artifactId>
-</dependency>
-<dependency>
-    <groupId>commons-beanutils</groupId>
-    <artifactId>commons-beanutils</artifactId>
-    <version>1.11.0</version>
-</dependency>
-	 <dependency>
-      <groupId>org.apache.derby</groupId>
-      <artifactId>derbynet</artifactId>
-    </dependency>
- <dependency>
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derby</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
       <groupId>org.apache.derby</groupId>
       <artifactId>derbyclient</artifactId>
     </dependency>
@@ -84,6 +76,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
+<dependency>
+    <groupId>commons-beanutils</groupId>
+    <artifactId>commons-beanutils</artifactId>
+    <version>1.11.0</version>
+</dependency>
 	</dependencies>
 
 	<build>
